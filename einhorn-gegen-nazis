@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einhorn gegen Nazis</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <script defer src="assets/script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>🦄 Einhorn gegen Nazis</h1>
+    </header>
+    <main>
+        <img id="einhorn" src="assets/einhorn.png" alt="Buntes Einhorn" class="einhorn">
+        <p>Das Einhorn kann nicht verstehen, warum man so viel Hass verbreiten muss.  
+        Es gibt Wichtigeres auf der Welt! 🌍</p>
+
+        <section class="quiz">
+            <h2>🎤 Quiz: Ist die AfD eine Alternative?</h2>
+            <p>Teste dein Wissen!</p>
+
+            <div class="frage">
+                <p><strong>Frage 1:</strong> Was sagt die AfD zum Klimawandel?</p>
+                <button onclick="checkAnswer(1, false)">Ernstes Problem, das wir bekämpfen müssen</button>
+                <button onclick="checkAnswer(1, true)">Gibt es nicht, wir brauchen mehr Kohlekraft</button>
+            </div>
+
+            <div class="frage">
+                <p><strong>Frage 2:</strong> Wie steht die AfD zur sozialen Gerechtigkeit?</p>
+                <button onclick="checkAnswer(2, false)">Faire Löhne und Unterstützung für Bedürftige</button>
+                <button onclick="checkAnswer(2, true)">Steuersenkungen für Reiche und weniger Sozialhilfe</button>
+            </div>
+
+            <p id="quiz-result"></p>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 Einhorn gegen Nazis – Für eine bunte und gerechte Welt</p>
+    </footer>
+</body>
+</html>
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(135deg, #ff99cc, #66ccff);
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    font-size: 24px;
+}
+
+.einhorn {
+    width: 300px;
+    margin: 20px auto;
+    transition: transform 0.5s ease-in-out;
+}
+
+p {
+    font-size: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.quiz {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+h2 {
+    color: #ffcc00;
+}
+
+button {
+    display: block;
+    background: #ffcc00;
+    color: black;
+    padding: 10px;
+    margin: 10px auto;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #ff9900;
+}
+
+#quiz-result {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.einhorn-bounce {
+    transform: scale(1.1);
+}
+
+.einhorn-shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-10px); }
+}
+
+footer {
+    margin-top: 30px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+function checkAnswer(question, isCorrect) {
+    let resultElement = document.getElementById("quiz-result");
+    let einhorn = document.getElementById("einhorn");
+
+    if (isCorrect) {
+        resultElement.innerHTML = "❌ Falsch! Die AfD verbreitet gefährliche Lügen!";
+        resultElement.style.color = "red";
+        einhorn.classList.add("einhorn-shake");
+    } else {
+        resultElement.innerHTML = "✅ Richtig! Super gemacht!";
+        resultElement.style.color = "green";
+        einhorn.classList.add("einhorn-bounce");
+    }
+
+    setTimeout(() => {
+        einhorn.classList.remove("einhorn-shake", "einhorn-bounce");
+    }, 500);
+}
